@@ -57,7 +57,9 @@ function hoursWorkedOnDate(employeeRecord) {
 
 function wagesEarnedOnDate(employeeRecord) {
     let hoursWorked = hoursWorkedOnDate(employeeRecord)
-    let wages = employeeRecord["payPerHour"] * hoursWorked
+    let wages = employeeRecord.payPerHour * hoursWorked
+    console.log(employeeRecord.firstName)
+    console.log(wages)
     return wages
 }
 
@@ -70,17 +72,16 @@ function findEmployeeByFirstName(srcArray, firstName) {
 }
 
 
-function calculatePayroll(employeeRecordsArray) {
-    let allWagesArray = EmployeeRecordsArray.map(record => allWagesFor(record))
-    let payroll = allWagesArray.reduce(function(accumulator, currentValue) {
-        return accumulator + currentValue
-    })
-    return payroll
-}
+// function calculatePayroll(employeeRecordsArray) {
+//     let allWagesArray = employeeRecordsArray.map(record => allWagesFor(record))
+//     let payroll = allWagesArray.reduce(function(accumulator, currentValue) {
+//         return accumulator + currentValue
+//     })
+//     return payroll
+// }
 
 function calculatePayroll(employeeRecordsArray) {
     let allWagesArray = employeeRecordsArray.map(record => wagesEarnedOnDate(record))
-    console.log(allWagesArray)
     let payroll = allWagesArray.reduce(function(accumulator, currentValue) {
         return accumulator + currentValue
     })
